@@ -1,5 +1,7 @@
 extension ListExtension2 on List<int> {
-  Map<int, int> mapFromList() {
+
+  /// * Version 1
+  Map<int, int> mapFromList_1() {
     Map<int, int> mp = {};
     int num = 0;
     for (var i = 0; i < length; ++i) {
@@ -11,8 +13,8 @@ extension ListExtension2 on List<int> {
     return mp;
   }
 
-  /// * Corrected
-  Map<int, int> mapFromList2() {
+  /// * Optimized Version
+  Map<int, int> mapFromList() {
     Map<int, int> mp = {};
     for (var i = 0; i < length; i++) {
       mp[i] = this[i];
