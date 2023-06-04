@@ -8,7 +8,7 @@ void main(List<String> arguments) {
 
   final object = list.mapFromList_1();
 
-  var ob = ["foo", "bar", "baz"].joinFix("");
+  var ob = ["foo", "bar", "baz"].joinFix_2(separator: " ", prefix: "_", suffix: "_", applyToEach: true);
 
   print(ob);
 }
