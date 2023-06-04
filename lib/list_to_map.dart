@@ -1,4 +1,4 @@
-extension ListExtension2 on List<int> {
+extension ListMapExt on List<int> {
 
   /// * Version 1
   Map<int, int> mapFromList_1() {

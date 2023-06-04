@@ -1,5 +1,5 @@
 
-extension ListExt<T> on List<T> {
+extension ListExtn<T> on List<T> {
 
   /// * Version 1
   List<T> multiply_1({required int times, bool sort = false}) {
