@@ -1,3 +1,5 @@
+import 'match.dart';
+
 /// Read more about these functions here:
 ///
 /// [Payment card number division with a space as the separator.](https://gist.github.com/kenresoft/bc91291c6d1d06826002939c38f5498a)
@@ -42,7 +44,7 @@ int divisionsWithRemainder(String input) {
 /// Here is a breakdown of the steps that the `spacedDigits()` function takes:
 ///
 /// 1. Get the number of digits in the input string.
-/// 2. If the divisor is not provided, then use the number of digits as the divisor.
+/// 2. If the divisor is not provided, then uses 3 or 4 as the divisor depending on the input length.
 /// 3. Call the `space()` function to get a string with spaces inserted between each digit of the input string.
 /// 4. Return the string with spaces inserted between each digit.
 ///
@@ -62,26 +64,30 @@ String spacedDigits(String input, int? div) {
 // This is more efficient, as it avoids the need to create a new function for each call to the spacedDigits function.
   final int divs = divisions(input);
 
-  if (div != null) {
-    return space(input, () => div);
-  }
-
-  if (space(input, () => divs) == input) {
-    for (var i = 0; i < input.length; i++) {
-      if (count == divisionsWithRemainder(input)) {
-        spacedOutput += ' ';
-        count = 0;
-      }
-      spacedOutput += input[i];
-      count += 1;
+  if (matchCard(input)) {
+    if (div != null) {
+      return space(input, () => div);
     }
+
+    if (space(input, () => divs) == input) {
+      for (var i = 0; i < input.length; i++) {
+        if (count == divisionsWithRemainder(input)) {
+          spacedOutput += ' ';
+          count = 0;
+        }
+        spacedOutput += input[i];
+        count += 1;
+      }
+    } else {
+      spacedOutput = space(
+        input,
+        () => divisions(input),
+      );
+    }
+    return spacedOutput.trim();
   } else {
-    spacedOutput = space(
-      input,
-      () => divisions(input),
-    );
+    return 'Invalid card number';
   }
-  return spacedOutput.trim();
 }
 
 // This function takes a string input and adds spaces after every n characters, where n

@@ -13,5 +13,13 @@ in `lib/`, and example unit test in `test/`.
 * multiply
 * mapFromList
 * joinFix
+* spacedDigits
+* matchCard
 
 ### 
+
+## Change Log
+
+The Change log can be viewed here.
+
+![Change Log](CHANGELOG.md)
