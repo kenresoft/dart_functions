@@ -1,6 +1,6 @@
 name: dart_functions
 description: A sample command-line application.
-version: 1.0.1
+version: 1.0.2
 repository: https://github.com/kenresoft/dart_functions
 
 environment:
