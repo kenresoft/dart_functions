@@ -18,21 +18,6 @@ void main(List<String> arguments) {
 
   print('');
 
-  //print(spacedDigits('4547548', 3));
+  print(spacedDigits('4547548', 3));
 
-/*  List dataset = [
-    [2011, 80],
-    [2012, 90],
-    [2013, 92],
-    [2014, 83],
-    [2015, 94],
-    [2016, 99],
-    [2017, 92]
-  ];
-
-  print(straightLineForecast(2017, dataset));*/
-  var r = Recommendation();
-  print(r.dataset);
-  print('');
-  print(r.recommend());
 }
