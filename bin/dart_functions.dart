@@ -1,5 +1,8 @@
 import 'package:dart_functions/dart_functions.dart';
+import 'package:dart_functions/src/ml/recommendation.dart';
 import 'package:dart_functions/src/space.dart';
+
+import 'package:dart_functions/src/ml/forecast.dart';
 
 void main(List<String> arguments) {
   arguments = ['Multiply', 'Dart', 'Function'];
@@ -9,11 +12,12 @@ void main(List<String> arguments) {
 
   final object = list.mapFromList_1();
 
-  var ob = ["foo", "bar", "baz"].joinFix_2(separator: " ", prefix: "_", suffix: "_", applyToEach: true);
+  var ob = ["Welcome", "to", "Dart"].joinFix_2(separator: " ", prefix: "_", suffix: "_", applyToEach: true);
 
-  print(ob);
+  //print(ob);
 
   print('');
 
   print(spacedDigits('4547548', 3));
+
 }
