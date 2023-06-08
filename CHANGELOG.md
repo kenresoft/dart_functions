@@ -9,6 +9,7 @@
 ## 1.0.1
 
 - Moved library codes to `lib/src/` and exported them through `lib/dart_functions.dart`
+- Refactored and fixed bugs in functions.
 
 ## 1.0.2
 
