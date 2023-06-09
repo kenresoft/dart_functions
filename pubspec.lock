@@ -153,6 +153,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.12.16"
+  matrices:
+    dependency: "direct main"
+    description:
+      name: matrices
+      sha256: "498260281f24bc4ff2ab4c81a447e1bf5acdab0efc7b5d41996d3eeb8012288d"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.2.6"
   meta:
     dependency: transitive
     description:
