@@ -1,35 +1,35 @@
 import 'dart:math';
 
-import 'package:matrices/matrices.dart' as matrices;
+import 'matrix.dart';
 
 class CubicRegression {
-  const CubicRegression(this.dataset);
+  const CubicRegression(this.matrix);
 
-  final matrices.Matrix dataset;
+  final Matrix matrix;
 
   predict(var testX) {
-    var c1 = dataset.column(0);
-    var c2 = dataset.column(0).map((e) => e * e).toList();
-    var c3 = c2.map((e) => e * (sqrt(e))).toList();
+    Column c1 = matrix.column1;
+    Column c2 = matrix.column1.map((e) => e * e).toList();
+    Column c3 = c2.map((e) => e * (sqrt(e))).toList();
 
-    var x = matrices.Matrix.one(dataset.rowCount, 1)
+    Matrix x = Matrix.singleColumn(matrix.rows)
       ..addColumn(c1, 1)
       ..addColumn(c2, 2)
       ..addColumn(c3, 3);
 
-    var y = matrices.Matrix.one(dataset.rowCount, 1)..setColumn(dataset.column(1), 0);
+    Matrix y = Matrix.singleColumn(matrix.rows)..setColumn(matrix.column1, 0);
 
-    var step1 = x.transpose;
-    var step2 = matrices.SquareMatrix.fromList((step1 * x).matrix);
-    var step3 = step2.inverse;
-    var step4 = step3 * step1 * y;
+    Matrix step1 = x.transpose;
+    Matrix step2 = step1 * x;
+    Matrix step3 = step2.inverse;
+    Matrix step4 = step3 * step1 * y;
 
-    var a = step4[0][0];
-    var b = step4[1][0];
-    var c = step4[2][0];
-    var d = step4[3][0];
+    double a = step4[0][0];
+    double b = step4[1][0];
+    double c = step4[2][0];
+    double d = step4[3][0];
 
-    var yPredict = a + (b * testX) + (c * pow(testX, 2)) + (d * pow(testX, 3));
+    double yPredict = a + (b * testX) + (c * pow(testX, 2)) + (d * pow(testX, 3));
 
     return yPredict;
   }
