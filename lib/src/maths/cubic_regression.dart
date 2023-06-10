@@ -12,12 +12,12 @@ class CubicRegression {
     Column c2 = matrix.column1.map((e) => e * e).toList();
     Column c3 = c2.map((e) => e * (sqrt(e))).toList();
 
-    Matrix x = Matrix.singleColumn(matrix.rows)
+    Matrix x = Matrix.singleColumn(row: matrix.rows)
       ..addColumn(c1, 1)
       ..addColumn(c2, 2)
       ..addColumn(c3, 3);
 
-    Matrix y = Matrix.singleColumn(matrix.rows)..setColumn(matrix.column1, 0);
+    Matrix y = Matrix.singleColumn(row: matrix.rows)..setColumn(matrix.column2, 0);
 
     Matrix step1 = x.transpose;
     Matrix step2 = step1 * x;
@@ -33,4 +33,14 @@ class CubicRegression {
 
     return yPredict;
   }
+}
+
+class RowColumn extends Matrix {
+  late double value;
+
+  RowColumn(int a, int b) : super([]) {
+    value = data[a][b];
+  }
+
+  get go => value;
 }
