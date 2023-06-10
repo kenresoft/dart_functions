@@ -1,10 +1,7 @@
 import 'package:dart_functions/src/extensions/join.dart';
 import 'package:dart_functions/src/extensions/list_to_map.dart';
 import 'package:dart_functions/src/maths/cubic_regression.dart';
-import 'package:matrices/matrices.dart';
-//import 'package:dart_functions/src/maths/matrix.dart';
-import 'package:dart_functions/src/ml/ml_knn.dart';
-import 'package:dart_functions/src/ml/recommendation.dart';
+import 'package:dart_functions/src/maths/matrix.dart';
 
 void main(List<String> arguments) {
   arguments = ['Multiply', 'Dart', 'Function'];
@@ -22,7 +19,7 @@ void main(List<String> arguments) {
 
   //print(spacedDigits('4547548', 3));
 
-  List<List<double>> dataset = [
+  List<List<double>> dataset_ = [
     /*[1, 2, 11],
     [1, 4, 21],
     [2, 6, 32],
@@ -31,16 +28,18 @@ void main(List<String> arguments) {
     [3, 9, 48],
     [3, 9, 48],
     [5, 10, 55],*/
-    //[5, 1000],
-    [4.5, 900],
+    [5, 1000],
+    [4.5, 1000],
     [4, 500],
     [3.5, 200],
     [3, 100],
     [2.5, 50],
-    //[0, 1],
+    [1, 1],
   ];
 
-  //print(straightLineForecast(2017, dataset));*/
+/*
+  print(straightLineForecast(2017, dataset));
+*/
 
 /*  var k = mlKnn(dataset, [5, 0], 4);
   //var kn = k.recommend([6,6]);
@@ -51,6 +50,134 @@ void main(List<String> arguments) {
   print('');
   print(r.recommend());*/
 
-  var d = CubicRegression(Matrix.fromList(dataset));
-  print(d.predict(3.5));
+/*  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12,
+  13,
+  14,
+  15,
+  16,
+  17,
+  18,
+  19,
+  20,
+  21,
+  22,
+  23,
+  24,
+  25,
+  26,
+  27,
+  28,
+  29,
+  30,
+  31,
+  32,
+  33,
+  34,
+  35,
+  36,
+  37,
+  38,
+  39,
+  40,
+  41,
+  42,
+  43,
+  44,
+  45,
+  46,
+  47,
+  48,
+  49,
+  50,
+  51,
+  52,
+  53,
+  54,
+  55,
+  56,
+  57,
+  58,
+  59,
+  60,*/
+
+  List<List<double>> dataset = [
+    [1000, 10],
+    [500, 9],
+    [200, 8],
+    [100, 7],
+    [50, 6],
+    [25, 5],
+    [10, 4],
+    [5, 3],
+    [2, 2],
+    [1, 1],
+    [950, 9.5],
+    [450, 9],
+    [150, 8],
+    [75, 7],
+    [37, 6],
+    [18, 5],
+    [9, 4],
+    [4, 3],
+    [2, 2],
+    [1, 1],
+    [900, 9.5],
+    [400, 9],
+    [100, 8],
+    [50, 7],
+    [25, 6],
+    [10, 5],
+    [5, 4],
+    [2, 3],
+    [1, 2],
+    [1, 1],
+    [850, 9.5],
+    [350, 9],
+    [125, 8],
+    [62, 7],
+    [31, 6],
+    [16, 5],
+    [8, 4],
+    [4, 3],
+    [2, 2],
+    [1, 1],
+    [800, 9.5],
+    [300, 9],
+    [100, 8],
+    [50, 7],
+    [25, 6],
+    [10, 5],
+    [5, 4],
+    [2, 3],
+    [1, 2],
+    [1, 1],
+    [750, 9.5],
+    [250, 9],
+    [125, 8],
+    [62, 7],
+    [31, 6],
+    [16, 5],
+    [8, 4],
+    [4, 3],
+    [2, 2],
+    [1, 1],
+  ];
+
+  var matrix = Matrix(dataset_)..swapColumns(0, 1);
+  var d = CubicRegression(matrix);
+  print(d.predict(500));
+
+  //matrix.swapRows_(6, 2);
+  print(matrix);
 }
