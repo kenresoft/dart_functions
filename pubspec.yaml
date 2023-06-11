@@ -9,6 +9,7 @@ environment:
 # Add regular dependencies here.
 dependencies:
   matrices: ^1.2.6
+  equatable: ^2.0.5
   # path: ^1.8.0
 
 dev_dependencies:
