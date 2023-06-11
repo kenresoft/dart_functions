@@ -8,9 +8,6 @@ double euclideanDistance(Dataset row1, Dataset row2) {
 }
 
 List sortDistanceList(List distance) {
-  //sorts while comparing two items of list
-  //compares the distance hence [1] where it access the distance
-  //distance.sort((a, b) => a[1] - b[1]);
   distance.sort((a, b) => a[1].compareTo(b[1]));
   return distance;
 }
@@ -51,7 +48,7 @@ List<Dataset> kNearestNeighbors(List<Dataset> trainDataset, Dataset testDatapoin
   return countOccurrence;
 }*/
 
-dynamic knn(List<Dataset> trainDataset, Dataset testDatapoint, int neighbors) {
+dynamic recommendData(List<Dataset> trainDataset, Dataset testDatapoint, int neighbors) {
   // Calculate the distances between the testDatapoint and all the data points in the trainDataset.
   List distances = [];
   for (Dataset datapoint in trainDataset) {
