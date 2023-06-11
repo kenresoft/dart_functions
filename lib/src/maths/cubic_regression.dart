@@ -7,7 +7,7 @@ class CubicRegression {
 
   final Matrix matrix;
 
-  predict(var testX) {
+  double predict(var testX) {
     Column c1 = matrix.column1;
     Column c2 = matrix.column1.map((e) => e * e).toList();
     Column c3 = c2.map((e) => e * (sqrt(e))).toList();
@@ -35,12 +35,3 @@ class CubicRegression {
   }
 }
 
-class RowColumn extends Matrix {
-  late double value;
-
-  RowColumn(int a, int b) : super([]) {
-    value = data[a][b];
-  }
-
-  get go => value;
-}
