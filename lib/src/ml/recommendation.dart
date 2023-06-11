@@ -2,7 +2,7 @@ import 'package:dart_functions/src/maths/cubic_regression.dart';
 import 'package:dart_functions/src/maths/matrix.dart';
 
 import 'dataset.dart';
-import 'knn.dart';
+import 'recommender.dart';
 
 class Recommendation {
   late List<Dataset> _data;
@@ -28,6 +28,6 @@ class Recommendation {
   }
 
   void recommend({required Dataset testDatapoint, required int count}) {
-    _recommendation = knn(_data, testDatapoint, count);
+    _recommendation = recommendData(_data, testDatapoint, count);
   }
 }
