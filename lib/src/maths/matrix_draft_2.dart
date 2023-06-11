@@ -63,7 +63,7 @@ class Matrix extends matrices.Matrix {
     for (int i = 0; i < rows; i++) {
       for (int j = 0; j < columns; j++) {
         for (int k = 0; k < columns; k++) {
-          result.data[i][j] += data[i][k] * multi.data[k][j];
+          result.data[i][j] += data[i][k] * multi.rawMatrix[k][j];
         }
       }
     }

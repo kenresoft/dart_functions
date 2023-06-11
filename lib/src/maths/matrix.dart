@@ -1,33 +1,40 @@
+import 'package:dart_functions/src/ml/dataset.dart';
 import 'package:matrices/matrices.dart' as matrices;
 
 /// A class that represents a matrix.
 class Matrix extends matrices.Matrix {
   /// The data of the matrix.
-  late List<List<double>> data;
+  late List<List<double>> rawMatrix;
 
   /// Creates a new matrix with the given data.
   ///
   /// The data must be a list of lists of doubles.
-  Matrix([this.data = const []]) : super.fromList(data);
+  Matrix([this.rawMatrix = const []]) : super.fromList(rawMatrix);
+
+  Matrix.unity({int rows = 1, int columns = 1}) : super.number(1, rows, columns);
+
+  Matrix.unit({int rows = 1, int columns = 1}) {
+    rawMatrix = List.generate(rows, (i) => List.generate(columns, (j) => 1));
+  }
 
   /// Creates a new matrix with a single row.
   ///
   /// The column must be a positive integer.
-  Matrix.singleRow(int column) : super.one(1, column);
+  Matrix.singleRow({int column = 1}) : super.one(1, column);
 
   /// Creates a new matrix with a single column.
   ///
   /// The row must be a positive integer.
-  Matrix.singleColumn({required int row}) : super.one(row, 1);
+  Matrix.singleColumn({int row = 1}) : super.one(row, 1);
 
   /// The data of the matrix as a list of lists.
   Matrix get mat => Matrix(matrix);
 
   /// The number of rows in the matrix.
-  int get rows => data.length;
+  int get rows => rawMatrix.length;
 
   /// The number of columns in the matrix.
-  int get columns => data[0].length;
+  int get columns => rawMatrix[0].length;
 
   /// This method returns the transpose of the matrix.
   ///
@@ -49,14 +56,36 @@ class Matrix extends matrices.Matrix {
   /// The first column of the matrix.
   Column get column1 => column(0);
 
+  set column1(Column value) {
+    setColumn(value, 0);
+  }
+
   /// The second column of the matrix.
   Column get column2 => column(1);
 
-  @override
+  set column2(Column value) {
+    setColumn(value, 1);
+  }
+
+  /// The first row of the matrix.
+  Column get row1 => row(0);
+
+  set row1(Column value) {
+    setColumn(value, 0);
+  }
+
+  /// The second row of the matrix.
+  Column get row2 => row(1);
+
+  set row2(Column value) {
+    setColumn(value, 1);
+  }
+
 
   /// Multiplies this matrix by another matrix.
   ///
   /// The other matrix must have the same number of columns as this matrix has rows.
+  @override
   Matrix operator *(multi) {
     return Matrix((super * multi).matrix);
   }
@@ -94,6 +123,24 @@ class Matrix extends matrices.Matrix {
       mat[i][column2] = temp;
     }
   }
+
+/*  static Matrix fromListOfObjects(List<Object> objects) {
+    int rows = objects.length;
+    var classMirror = reflect(objects.first.runtimeType);
+    //int columns = classMirror.getFields().length;
+    var typeMirror = classMirror.type;
+    int columns = typeMirror.declarations.keys.whereType<Symbol>().length;
+    Matrix matrix = Matrix.unit(rows: rows, columns: columns);
+    for (int i = 0; i < rows; i++) {
+      for (int j = 0; j < columns; j++) {
+        var mirror = reflect(objects[i]);
+        var field = mirror.getField(Symbol(j.toString()));
+        var value = field.reflectee;
+        matrix[i][j] = value;
+      }
+    }
+    return matrix;
+  }*/
 }
 
 typedef Column = List<double>;
