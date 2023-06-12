@@ -28,6 +28,6 @@ class Recommendation {
   }
 
   void recommend({required Dataset testDatapoint, required int count}) {
-    _recommendation = recommendData(_data, testDatapoint, count);
+    _recommendation = Recommender(trainDataset: _data).recommendData(testDatapoint, count);
   }
 }
