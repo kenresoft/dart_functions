@@ -4,3 +4,7 @@ export 'package:dart_functions/src/collections/map_time.dart';
 export 'package:dart_functions/src/extensions/join.dart';
 export 'package:dart_functions/src/extensions/list_to_map.dart';
 export 'package:dart_functions/src/extensions/multiply.dart';
+export 'package:dart_functions/src/maths/cubic_regression.dart';
+export 'package:dart_functions/src/maths/matrix.dart';
+export 'package:dart_functions/src/ml/dataset.dart';
+export 'package:dart_functions/src/ml/recommendation.dart';
