@@ -3,7 +3,9 @@ import 'dart:math';
 import 'package:dart_functions/src/maths/matrix.dart';
 import 'package:equatable/equatable.dart';
 
+/// A class that represents a dataset.
 class Dataset implements Equatable, Comparable<Dataset> {
+  /// Creates a new dataset with the given image ID, views, and rating.
   const Dataset({
     this.imageId,
     required this.views,
@@ -17,15 +19,25 @@ class Dataset implements Equatable, Comparable<Dataset> {
     required this.rating,
   }) : rank = getRank(rating, views);
 
+  /// Creates a new dataset with the given views and rating. The image ID will be null.
   Dataset.dataPoint({
     required this.views,
     required this.rating,
   })  : imageId = null,
         rank = getRank(rating, views);
 
+  /// The image ID.
   final int? imageId;
+
+  /// The number of views.
   final double views;
+
+  /// The rating.
   final double rating;
+
+  /// The rank of the dataset.
+  ///
+  /// The rank is calculated by adding the rating and the number of views.
   final double? rank;
 
   @override
@@ -41,6 +53,7 @@ class Dataset implements Equatable, Comparable<Dataset> {
     return (views - other.views).toInt();
   }
 
+  /// Subtracts the given dataset from this dataset.
   Dataset operator -(Dataset other) {
     return Dataset.getWithRank(
       imageId: imageId,
@@ -49,6 +62,7 @@ class Dataset implements Equatable, Comparable<Dataset> {
     );
   }
 
+  /// Raises this dataset to the given power.
   Dataset power(int exponent) {
     return Dataset.getWithRank(
       imageId: imageId,
@@ -57,6 +71,7 @@ class Dataset implements Equatable, Comparable<Dataset> {
     );
   }
 
+  /// Creates a dataset from the given JSON object.
   factory Dataset.fromJson(Map<String, dynamic> json) {
     return Dataset(
       imageId: json['image_id'] as int,
@@ -65,6 +80,7 @@ class Dataset implements Equatable, Comparable<Dataset> {
     );
   }
 
+  /// Converts this dataset to JSON.
   Map<String, dynamic> toJson() {
     return {
       'image_id': imageId,
@@ -79,6 +95,7 @@ class Dataset implements Equatable, Comparable<Dataset> {
   @override
   bool? get stringify => false;
 
+  /// Generates a sample dataset of 1000 datasets.
   static List<Dataset> sample() {
     List<Dataset> list = [];
     for (int i = 0; i < 1000; i++) {
@@ -92,6 +109,7 @@ class Dataset implements Equatable, Comparable<Dataset> {
     return list;
   }
 
+  /// Converts a list of datasets to a matrix.
   static Matrix toMatrix(List<Dataset> datasets) {
     List<List<double>> matrix = [];
     for (Dataset dataset in datasets) {
@@ -102,6 +120,7 @@ class Dataset implements Equatable, Comparable<Dataset> {
   }
 }
 
+/// Calculates the rank of a dataset.
 double getRank(double rating, double views) {
   return rating + (5 * views);
 }
