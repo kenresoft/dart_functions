@@ -3,8 +3,11 @@
 - Initial version.
 - Added three functions:
     * `multiply.dart`
+      > creates a list of the given type that is multiplied by the given number.
     * `list_to_map.dart`
+      > creates a map from a list.
     * `join.dart`
+      > joins the elements of a list with a separator.
 
 ## 1.0.1
 
