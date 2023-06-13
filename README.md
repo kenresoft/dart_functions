@@ -1,6 +1,6 @@
 # dart_functions
 
-A collection of multi-versioned dart functions. 
+A collection of multi-versioned dart functions.
 Contains implementations and re-implementations of functions in different versions and variants.
 
 ## Project type
@@ -8,42 +8,65 @@ Contains implementations and re-implementations of functions in different versio
 A sample command-line application with an entrypoint in `bin/`, library code
 in `lib/`, and example unit test in `test/`.
 
-### Included functions
+### Included functions/Classes
 
 * multiply
 * mapFromList
 * joinFix
 * spacedDigits
 * matchCard
+* runtime
+* hybridMap
+* btree
+* matrix
+* regressions
+* recommender
+* dataset
 
 ## Related projects
 
 * [payment_card](https://github.com/kenresoft/payment_card)
 * [extensionresoft](https://github.com/kenresoft/extensionresoft) - (private repository)
 
+## Usage/examples
+
+### 1. join.dart
+
+```dart
+
+List<String> strings = ["Hello", "World"];
+
+String joinedStrings = strings.joinFix(separator: ", ");
+
+print(joinedStrings); // Hello, World
+
+String joinedStringsWithPrefixAndSuffix = strings.joinFix(
+  separator: ", ",
+  prefix: "(",
+  suffix: ")",
+  applyToEach: true,
+);
+
+print(joinedStringsWithPrefixAndSuffix); // (Hello, World)
+
+```
+
+#### Explanation
+
+Here is a table that summarizes the behavior of the `joinFix()` function:
+
+| Argument      | Behavior                                                                                                                                                      |
+|---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `separator`   | The string that will be used to separate the elements of the list.                                                                                            |
+| `prefix`      | The string that will be prepended to each element of the list.                                                                                                |
+| `suffix`      | The string that will be appended to each element of the list.                                                                                                 |
+| `applyToEach` | A Boolean value that indicates whether the prefix and suffix should be applied to each element of the list.                                                   |
+| Return value  | A string that contains the elements of the list, separated by the separator and with the prefix and suffix applied to each element, if `applyToEach` is true. |
+
+
+---
+
 ## Change Log
-
-### 1.0.0
-
-- Initial version.
-- Added three functions:
-    * `multiply.dart`
-    * `list_to_map.dart`
-    * `join.dart`
-
-### 1.0.1
-
-- Moved library codes to `lib/src/` and exported them through `lib/dart_functions.dart`
-- Refactored and fixed bugs in functions.
-
-### 1.0.2
-
-- Added `space.dart` which is a helper function to format an input card number.
-    - By default, uses 3 or 4 as the number divisor depending on the input length.
-    - Returns the input with spaces inserted between each digit.
-- Added `match.dart` which helps to validate the card number if it is valid or not.
-
-___
 
 The Change log can be viewed here.
 [Change Log](CHANGELOG.md)
