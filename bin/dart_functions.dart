@@ -1,7 +1,4 @@
-import 'package:dart_functions/src/extensions/join.dart';
-import 'package:dart_functions/src/extensions/list_to_map.dart';
-import 'package:dart_functions/src/maths/cubic_regression.dart';
-import 'package:dart_functions/src/maths/matrix.dart';
+import 'package:dart_functions/dart_functions.dart';
 
 void main(List<String> arguments) {
   arguments = ['Multiply', 'Dart', 'Function'];
@@ -36,80 +33,6 @@ void main(List<String> arguments) {
     [2.5, 50],
     [1, 1],
   ];
-
-/*
-  print(straightLineForecast(2017, dataset));
-*/
-
-/*  var k = mlKnn(dataset, [5, 0], 4);
-  //var kn = k.recommend([6,6]);
-  print(k);*/
-
-/*  var r = Recommendation();
-  //print(r.dataset);
-  print('');
-  print(r.recommend());*/
-
-/*  1,
-  2,
-  3,
-  4,
-  5,
-  6,
-  7,
-  8,
-  9,
-  10,
-  11,
-  12,
-  13,
-  14,
-  15,
-  16,
-  17,
-  18,
-  19,
-  20,
-  21,
-  22,
-  23,
-  24,
-  25,
-  26,
-  27,
-  28,
-  29,
-  30,
-  31,
-  32,
-  33,
-  34,
-  35,
-  36,
-  37,
-  38,
-  39,
-  40,
-  41,
-  42,
-  43,
-  44,
-  45,
-  46,
-  47,
-  48,
-  49,
-  50,
-  51,
-  52,
-  53,
-  54,
-  55,
-  56,
-  57,
-  58,
-  59,
-  60,*/
 
   List<List<double>> dataset = [
     [1000, 10],
@@ -174,10 +97,82 @@ void main(List<String> arguments) {
     [1, 1],
   ];
 
-  var matrix = Matrix(dataset_)..swapColumns(0, 1);
-  var d = CubicRegression(matrix);
-  print(d.predict(500));
+  var r = Recommendation();
+  r.train(dataset: Dataset.fromList(dataset));
+  r.predict(views: 1000);
+  r.recommend(testDatapoint: Dataset.dataPoint(views: 12, rating: 10.0), count: 4);
+  print(r.prediction);
+  print('');
+  print(r.recommendation);
+  print('');
+  print(r.matrix);
+  print('');
+  //print(Dataset.sample());
+  print(Dataset.fromList(dataset)[0].toJson());
 
-  //matrix.swapRows_(6, 2);
-  print(matrix);
+
+  /*  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12,
+  13,
+  14,
+  15,
+  16,
+  17,
+  18,
+  19,
+  20,
+  21,
+  22,
+  23,
+  24,
+  25,
+  26,
+  27,
+  28,
+  29,
+  30,
+  31,
+  32,
+  33,
+  34,
+  35,
+  36,
+  37,
+  38,
+  39,
+  40,
+  41,
+  42,
+  43,
+  44,
+  45,
+  46,
+  47,
+  48,
+  49,
+  50,
+  51,
+  52,
+  53,
+  54,
+  55,
+  56,
+  57,
+  58,
+  59,
+  60,*/
+
+  print(forecast(1000, dataset));
+
+  //var matrix = Matrix(dataset_)..swapColumns(0, 1);
 }

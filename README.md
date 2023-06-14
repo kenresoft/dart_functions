@@ -8,7 +8,7 @@ Contains implementations and re-implementations of functions in different versio
 A sample command-line application with an entrypoint in `bin/`, library code
 in `lib/`, and example unit test in `test/`.
 
-### Included functions/Classes
+### Included functions/classes
 
 * multiply
 * mapFromList
