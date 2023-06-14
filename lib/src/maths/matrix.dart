@@ -1,4 +1,3 @@
-import 'package:dart_functions/src/ml/dataset.dart';
 import 'package:matrices/matrices.dart' as matrices;
 
 /// A class that represents a matrix.
@@ -80,7 +79,6 @@ class Matrix extends matrices.Matrix {
   set row2(Column value) {
     setColumn(value, 1);
   }
-
 
   /// Multiplies this matrix by another matrix.
   ///
