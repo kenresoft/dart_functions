@@ -51,6 +51,7 @@ class Dataset implements Equatable, Comparable<Dataset> {
       return (rating - other.rating).toInt();
     }
     return (views - other.views).toInt();
+    //return this - other;
   }
 
   /// Subtracts the given dataset from this dataset.
@@ -62,12 +63,19 @@ class Dataset implements Equatable, Comparable<Dataset> {
     );
   }
 
+  /*int operator -(Dataset other) {
+    if (rating != other.rating) {
+      return (rating - other.rating).toInt();
+    }
+    return (views - other.views).toInt();
+  }*/
+
   /// Raises this dataset to the given power.
-  Dataset power(int exponent) {
+  factory Dataset.power(Dataset dataset, int exponent) {
     return Dataset.getWithRank(
-      imageId: imageId,
-      rating: pow(rating, exponent).toDouble(),
-      views: pow(views, exponent).toDouble(),
+      imageId: dataset.imageId,
+      rating: pow(dataset.rating, exponent).toDouble(),
+      views: pow(dataset.views, exponent).toDouble(),
     );
   }
 
@@ -89,6 +97,22 @@ class Dataset implements Equatable, Comparable<Dataset> {
     };
   }
 
+  Map<String, dynamic> toJsonList(List list) {
+    Map<String, dynamic> map = {};
+
+    map = {
+      'dataset': [
+        for (int i = 0; i < list.length; i++)
+          ({
+            'image_id': list[i].imageId,
+            'views': list[i].views,
+            'rating': list[i].rating,
+          })
+      ]
+    };
+    return map;
+  }
+
   @override
   List<Object?> get props => [imageId, views, rating, rank];
 
@@ -103,6 +127,19 @@ class Dataset implements Equatable, Comparable<Dataset> {
         imageId: i + 1,
         views: ((pow(i, 3) + 5 * i + 3) * 10),
         rating: (pow(i, 2) + 2 * i + 1) * 0.5,
+      );
+      list.add(newImage);
+    }
+    return list;
+  }
+
+  static List<Dataset> fromList(List l) {
+    List<Dataset> list = [];
+    for (int i = 0; i < l.length; i++) {
+      Dataset newImage = Dataset.getWithRank(
+        imageId: i + 1,
+        views: l[i][0],
+        rating: l[i][1],
       );
       list.add(newImage);
     }

@@ -57,7 +57,7 @@ class Recommender {
     /// Calculate the distances between the testDatapoint and all the data points in the trainDataset.
     List distances = [];
     for (Dataset datapoint in trainDataset) {
-      distances.add([datapoint, (datapoint - testDatapoint).power(2)]);
+      distances.add([datapoint, Dataset.power(datapoint - testDatapoint, 2)]);
     }
     sortDistanceList(distances);
 
