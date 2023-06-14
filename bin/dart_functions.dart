@@ -98,9 +98,9 @@ void main(List<String> arguments) {
   ];
 
   var r = Recommendation();
-  r.train(dataset: Dataset.fromList(dataset));
+  r.train(dataset: DataImage.fromList(dataset));
   r.predict(views: 1000);
-  r.recommend(testDatapoint: Dataset.dataPoint(views: 12, rating: 10.0), count: 4);
+  r.recommend(testDatapoint: DataImage.dataPoint(views: 12, rating: 10.0), count: 4);
   print(r.prediction);
   print('');
   print(r.recommendation);
@@ -108,8 +108,9 @@ void main(List<String> arguments) {
   print(r.matrix);
   print('');
   //print(Dataset.sample());
-  print(Dataset.fromList(dataset)[0].toJson());
-
+  print(DataImage.fromList(dataset).toJson());
+  print('');
+  print(DataImage.toJsonList(DataImage.fromList(dataset)));
 
   /*  1,
   2,

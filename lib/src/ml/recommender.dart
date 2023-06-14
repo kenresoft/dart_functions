@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:dart_functions/src/ml/dataset.dart';
+import 'package:dart_functions/dart_functions.dart';
 
 class Recommender {
   ///
@@ -18,10 +18,10 @@ class Recommender {
   /// The function returns the dataset with the highest occurrence count.
   Recommender({required this.trainDataset});
 
-  final List<Dataset> trainDataset;
+  final Dataset trainDataset;
 
   /// Calculates the Euclidean distance between two datasets.
-  double euclideanDistance(Dataset row1, Dataset row2) {
+  double euclideanDistance(DataImage row1, DataImage row2) {
     num distance = pow((row1.views - row2.views), 2) + pow((row1.rating - row2.rating), 2) + pow((row1.rank! - row2.rank!), 2);
     return sqrt(distance.toInt());
   }
@@ -33,7 +33,7 @@ class Recommender {
   }
 
   /// Finds the k nearest neighbors of a given dataset.
-  List<Dataset> kNearestNeighbors(List<Dataset> trainDataset, Dataset testDatapoint, int neighbours) {
+  List<DataImage> kNearestNeighbors(List<DataImage> trainDataset, DataImage testDatapoint, int neighbours) {
     List distances = []; // item -- Dataset & double
     for (var i = 0; i < trainDataset.length; i++) {
       var trainRow = trainDataset[i];
@@ -43,7 +43,7 @@ class Recommender {
 
     ///sorting the while comparing the euclidean of the test_row and the train data
     var sortedDistance = sortDistanceList(distances);
-    var neighbors = <Dataset>[];
+    var neighbors = <DataImage>[];
     for (var i = 0; i < neighbours; i++) {
       neighbors.add(sortedDistance[i][0]);
       print("Neighbours: ${sortedDistance[i][0]}");
@@ -53,22 +53,22 @@ class Recommender {
   }
 
   /// Recommends data to a user based on their interests.
-  dynamic recommendData(Dataset testDatapoint, int neighbors) {
+  dynamic recommendData(DataImage testDatapoint, int neighbors) {
     /// Calculate the distances between the testDatapoint and all the data points in the trainDataset.
     List distances = [];
-    for (Dataset datapoint in trainDataset) {
-      distances.add([datapoint, Dataset.power(datapoint - testDatapoint, 2)]);
+    for (DataImage datapoint in trainDataset.dataImage!) {
+      distances.add([datapoint, DataImage.power(datapoint - testDatapoint, 2)]);
     }
     sortDistanceList(distances);
 
-    var nearestNeighbors = <Dataset>[];
+    var nearestNeighbors = <DataImage>[];
     for (var i = 0; i < neighbors; i++) {
       nearestNeighbors.add(distances[i][0]);
       print("Neighbours: ${distances[i][0]}");
     }
 
     /// Count the occurrence of each neighbor.
-    Map countOccurrence = nearestNeighbors.fold({}, (Map map, Dataset neighbor) {
+    Map countOccurrence = nearestNeighbors.fold({}, (Map map, DataImage neighbor) {
       map[neighbor.rank] = (map[neighbor.rank] ?? 0) + 1;
       return map;
     });
