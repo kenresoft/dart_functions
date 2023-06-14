@@ -14,6 +14,10 @@ extension ListMapExt on List<int> {
   }
 
   /// * Optimized Version
+  /// Creates a map from a list.
+  ///
+  /// The map will have the same length as the list and will contain the elements of the list as keys and their corresponding indexes as values.
+
   Map<int, int> mapFromList() {
     Map<int, int> mp = {};
     for (var i = 0; i < length; i++) {
