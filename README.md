@@ -6,7 +6,7 @@ Contains implementations and re-implementations of functions in different versio
 ## Project type
 
 A sample command-line application with an entrypoint in `bin/`, library code
-in `lib/`, and example unit test in `test/`.
+in `lib/`, and an example unit test in `test/`.
 
 ### Included functions/classes
 
@@ -33,7 +33,6 @@ in `lib/`, and example unit test in `test/`.
 ### 1. join.dart
 
 ```dart
-
 List<String> strings = ["Hello", "World"];
 
 String joinedStrings = strings.joinFix(separator: ", ");
@@ -48,21 +47,39 @@ String joinedStringsWithPrefixAndSuffix = strings.joinFix(
 );
 
 print(joinedStringsWithPrefixAndSuffix); // (Hello, World)
-
 ```
 
 #### Explanation
 
 Here is a table that summarizes the behavior of the `joinFix()` function:
 
-| Argument      | Behavior                                                                                                                                                      |
-|---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `separator`   | The string that will be used to separate the elements of the list.                                                                                            |
-| `prefix`      | The string that will be prepended to each element of the list.                                                                                                |
-| `suffix`      | The string that will be appended to each element of the list.                                                                                                 |
-| `applyToEach` | A Boolean value that indicates whether the prefix and suffix should be applied to each element of the list.                                                   |
-| Return value  | A string that contains the elements of the list, separated by the separator and with the prefix and suffix applied to each element, if `applyToEach` is true. |
+| Argument      | Behavior                                                                                                                                                     |
+|---------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `separator`   | The string that will be used to separate the elements of the list.                                                                                           |
+| `prefix`      | The string that will be prepended to each element of the list.                                                                                               |
+| `suffix`      | The string that will be appended to each element of the list.                                                                                                |
+| `applyToEach` | A Boolean value that indicates whether the prefix and suffix should be applied to each element of the list.                                                  |
+| Return value  | A string that contains the elements of the list, separated by the separator and with the prefix and suffix applied to each element, if`applyToEach` is true. |
 
+### 2. Dataset.dart
+
+To convert Dataset(List of DataImages) to JSON, you can do the following:
+
+> Recommended way
+
+```dart
+List<List<double>> dataset = [];
+var dataset = DataImage.fromList(dataset);
+var json = DataImage.fromList(dataset).toJson();
+```
+
+> Alternatively, this is also possible:
+
+```dart
+List<List<double>> dataset = [];
+var dataset = DataImage.fromList(dataset);
+var json = DataImage.toJsonList(DataImage.fromList(dataset));
+```
 
 ---
 
@@ -70,3 +87,4 @@ Here is a table that summarizes the behavior of the `joinFix()` function:
 
 The Change log can be viewed here.
 [Change Log](CHANGELOG.md)
+
