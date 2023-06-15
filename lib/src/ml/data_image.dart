@@ -63,11 +63,21 @@ class DataImage implements Equatable, Comparable<DataImage> {
 
   @override
   int compareTo(DataImage other) {
+    // Check if the ratings are different.
     if (rating != other.rating) {
+      // Return the difference between the ratings, converted to an integer.
       return (rating - other.rating).toInt();
     }
-    return (views - other.views).toInt();
-    //return this - other;
+
+    // Check if the views are different.
+    if (views != other.views) {
+      // Return the difference between the views, converted to an integer.
+      return (views - other.views).toInt();
+      //return this - other;
+    }
+
+    // The ratings and views are equal. Return 0.
+    return 0;
   }
 
   /// Subtracts the given dataset from this dataset.
@@ -113,12 +123,18 @@ class DataImage implements Equatable, Comparable<DataImage> {
     };
   }
 
+  /// Convert a Dataset object to a JSON list.
   static Map<String, dynamic> toJsonList(Dataset dataset) {
+    // Create an empty map.
     Map<String, dynamic> map = {};
+    // Get the dataImage property from the dataset object.
+    List<DataImage> dataImage = dataset.dataImage!;
 
     map = {
       'dataImage': [
+        // Iterate through the list of dataImage objects.
         for (int i = 0; i < dataset.dataImage!.length; i++)
+          // Create a JSON object for the current dataImage object.
           {
             'image_id': dataset.dataImage![i].imageId,
             'views': dataset.dataImage![i].views,
@@ -126,6 +142,7 @@ class DataImage implements Equatable, Comparable<DataImage> {
           }
       ]
     };
+    // Return the map.
     return map;
   }
 
@@ -149,18 +166,31 @@ class DataImage implements Equatable, Comparable<DataImage> {
     return Dataset(dataImage: list);
   }
 
-  static Dataset fromList(List list) {
-    List<DataImage> dataImageList = [];
-    for (int i = 0; i < list.length; i++) {
-      DataImage newImage = DataImage.getWithRank(
-        imageId: i + 1,
-        views: list[i][0],
-        rating: list[i][1],
-      );
-      dataImageList.add(newImage);
-    }
-    return Dataset(dataImage: dataImageList);
+/// Create a Dataset object from a list of DataImage objects
+static Dataset fromList(List list) {
+  // Create a new List object to store the DataImage objects.
+  List<DataImage> dataImageList = [];
+
+  // Iterate through the list of DataImage objects.
+  for (int i = 0; i < list.length; i++) {
+    // Create a new DataImage object.
+    DataImage newImage = DataImage.getWithRank(
+      imageId: i + 1,
+      views: list[i][0],
+      rating: list[i][1],
+    );
+
+    // Add the new DataImage object to the dataImageList list.
+    dataImageList.add(newImage);
   }
+
+  // Create a new Dataset object.
+  Dataset dataset = Dataset(dataImage: dataImageList);
+
+  // Return the Dataset object.
+  return dataset;
+}
+
 
   /// Converts a list of datasets to a matrix.
   static Matrix toMatrix(Dataset datasets) {
