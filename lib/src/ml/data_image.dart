@@ -4,9 +4,9 @@ import 'dart:math';
 import 'package:dart_functions/dart_functions.dart';
 import 'package:equatable/equatable.dart';
 
-/// A class that represents a dataset.
+/// A class that represents a `dataImage`.
 class DataImage implements Equatable, Comparable<DataImage> {
-  /// Creates a new dataset with the given image ID, views, and rating.
+  /// Creates a new `dataImage` with the given image ID, views, and rating.
   const DataImage({
     this.imageId,
     required this.views,
@@ -20,13 +20,14 @@ class DataImage implements Equatable, Comparable<DataImage> {
     required this.rating,
   }) : rank = getRank(rating, views);
 
-  /// Creates a new dataset with the given views and rating. The image ID will be null.
+  /// Creates a new `dataImage` with the given views and rating. The image ID will be null.
   DataImage.dataPoint({
     required this.views,
     required this.rating,
   })  : imageId = null,
         rank = getRank(rating, views);
 
+  /// Creates a copy of the `DataImage` object with the specified changes.
   DataImage copyWith({
     int? imageId,
     double? views,
@@ -47,7 +48,7 @@ class DataImage implements Equatable, Comparable<DataImage> {
   /// The rating.
   final double rating;
 
-  /// The rank of the dataset.
+  /// The rank of the `dataImage`.
   ///
   /// The rank is calculated by adding the rating and the number of views.
   final double? rank;
@@ -80,7 +81,7 @@ class DataImage implements Equatable, Comparable<DataImage> {
     return 0;
   }
 
-  /// Subtracts the given dataset from this dataset.
+  /// Subtracts the given `dataImage` from this `dataImage`.
   DataImage operator -(DataImage other) {
     return DataImage.getWithRank(
       imageId: imageId,
@@ -96,7 +97,7 @@ class DataImage implements Equatable, Comparable<DataImage> {
     return (views - other.views).toInt();
   }*/
 
-  /// Raises this dataset to the given power.
+  /// Raises this `dataImage` to the given power.
   factory DataImage.power(DataImage dataset, int exponent) {
     return DataImage.getWithRank(
       imageId: dataset.imageId,
@@ -105,7 +106,7 @@ class DataImage implements Equatable, Comparable<DataImage> {
     );
   }
 
-  /// Creates a dataset from the given JSON object.
+  /// Creates a `dataImage` from the given JSON object.
   factory DataImage.fromJson(Map<String, dynamic> json) {
     return DataImage(
       imageId: json['image_id'] as int,
@@ -114,7 +115,7 @@ class DataImage implements Equatable, Comparable<DataImage> {
     );
   }
 
-  /// Converts this dataset to JSON.
+  /// Converts this `dataImage` to JSON.
   Map<String, dynamic> toJson() {
     return {
       'image_id': imageId,
@@ -136,9 +137,9 @@ class DataImage implements Equatable, Comparable<DataImage> {
         for (int i = 0; i < dataset.dataImage!.length; i++)
           // Create a JSON object for the current dataImage object.
           {
-            'image_id': dataset.dataImage![i].imageId,
-            'views': dataset.dataImage![i].views,
-            'rating': dataset.dataImage![i].rating,
+            'image_id': dataImage[i].imageId,
+            'views': dataImage[i].views,
+            'rating': dataImage[i].rating,
           }
       ]
     };
@@ -152,7 +153,7 @@ class DataImage implements Equatable, Comparable<DataImage> {
   @override
   bool? get stringify => false;
 
-  /// Generates a sample dataset of 1000 datasets.
+  /// Generates a sample dataset of 1000 dataImages.
   static Dataset sample() {
     List<DataImage> list = [];
     for (int i = 0; i < 1000; i++) {
@@ -166,31 +167,30 @@ class DataImage implements Equatable, Comparable<DataImage> {
     return Dataset(dataImage: list);
   }
 
-/// Create a Dataset object from a list of DataImage objects
-static Dataset fromList(List list) {
-  // Create a new List object to store the DataImage objects.
-  List<DataImage> dataImageList = [];
+  /// Create a Dataset object from a list of DataImage objects
+  static Dataset fromList(List list) {
+    // Create a new List object to store the DataImage objects.
+    List<DataImage> dataImageList = [];
 
-  // Iterate through the list of DataImage objects.
-  for (int i = 0; i < list.length; i++) {
-    // Create a new DataImage object.
-    DataImage newImage = DataImage.getWithRank(
-      imageId: i + 1,
-      views: list[i][0],
-      rating: list[i][1],
-    );
+    // Iterate through the list of DataImage objects.
+    for (int i = 0; i < list.length; i++) {
+      // Create a new DataImage object.
+      DataImage newImage = DataImage.getWithRank(
+        imageId: i + 1,
+        views: list[i][0],
+        rating: list[i][1],
+      );
 
-    // Add the new DataImage object to the dataImageList list.
-    dataImageList.add(newImage);
+      // Add the new DataImage object to the dataImageList list.
+      dataImageList.add(newImage);
+    }
+
+    // Create a new Dataset object.
+    Dataset dataset = Dataset(dataImage: dataImageList);
+
+    // Return the Dataset object.
+    return dataset;
   }
-
-  // Create a new Dataset object.
-  Dataset dataset = Dataset(dataImage: dataImageList);
-
-  // Return the Dataset object.
-  return dataset;
-}
-
 
   /// Converts a list of datasets to a matrix.
   static Matrix toMatrix(Dataset datasets) {
@@ -203,7 +203,7 @@ static Dataset fromList(List list) {
   }
 }
 
-/// Calculates the rank of a dataset.
+/// Calculates the rank of a `dataImage`.
 double getRank(double rating, double views) {
   return rating + (5 * views);
 }
