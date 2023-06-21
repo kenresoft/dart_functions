@@ -8,6 +8,13 @@ Contains implementations and re-implementations of functions in different versio
 A sample command-line application with an entrypoint in `bin/`, library code
 in `lib/`, and an example unit test in `test/`.
 
+### Features
+
+* A wide variety of functions to choose from
+* Functions are well-documented and easy to use
+* Functions are organized into logical categories
+* Functions can be integrated into any Dart/Flutter application
+
 ### Included functions/classes
 
 * multiply
@@ -112,4 +119,11 @@ Here is a table that summarizes the input and output of each function:
 
 The Change log can be viewed here.
 [Change Log](CHANGELOG.md)
+
+### Contributing
+
+This project is open source and contributions are welcome.
+If you find a bug or have an improvement, please open an issue or submit a pull request.
+
+Thank you for using Dart Functions!
 
