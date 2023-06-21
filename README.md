@@ -34,6 +34,7 @@ in `lib/`, and an example unit test in `test/`.
 
 * [payment_card](https://github.com/kenresoft/payment_card)
 * [extensionresoft](https://github.com/kenresoft/extensionresoft) - (private repository)
+* [image_recommendation](https://github.com/kenresoft/image_recommendation)
 
 ## Usage/examples
 
@@ -97,23 +98,22 @@ var json = DataImage.toJsonList(DataImage.fromList(dataset));
 
 Here is a table explanation of the recommender.
 
-**Function** | **Description** | **Output**
----|---|---|
-`euclideanDistance()` | Calculates the Euclidean distance between two datasets. | A double value representing the Euclidean distance between the two datasets.
-`sortDistanceList()` | Sorts a list of distances by their values. | A sorted list of distances.
-`kNearestNeighbors()` | Finds the k nearest neighbors of a given dataset. | A list of the k nearest neighbors of the given dataset.
-`recommendData()` | Recommends data to a user based on their interests. | A map of the number of times each neighbor has been recommended.
-
+| **Function**          | **Description**                                         | **Output**                                                                   |
+|-----------------------|---------------------------------------------------------|------------------------------------------------------------------------------|
+| `euclideanDistance()` | Calculates the Euclidean distance between two datasets. | A double value representing the Euclidean distance between the two datasets. |
+| `sortDistanceList()`  | Sorts a list of distances by their values.              | A sorted list of distances.                                                  |
+| `kNearestNeighbors()` | Finds the k nearest neighbors of a given dataset.       | A list of the k nearest neighbors of the given dataset.                      |
+| `recommendData()`     | Recommends data to a user based on their interests.     | A map of the number of times each neighbor has been recommended.             |
 
 Here is a table that summarizes the input and output of each function:
 
 
-**Function** | **Input** | **Output**
----|---|---|
-`euclideanDistance()` | Two datasets | A double value representing the Euclidean distance between the two datasets.
-`sortDistanceList()` | A list of distances | A sorted list of distances.
-`kNearestNeighbors()` | A dataset and an integer k | A list of the k nearest neighbors of the given dataset.
-`recommendData()` | A dataset and an integer k | A map of the number of times each neighbor has been recommended.
+| **Function**          | **Input**                  | **Output**                                                                   |
+|-----------------------|----------------------------|------------------------------------------------------------------------------|
+| `euclideanDistance()` | Two datasets               | A double value representing the Euclidean distance between the two datasets. |
+| `sortDistanceList()`  | A list of distances        | A sorted list of distances.                                                  |
+| `kNearestNeighbors()` | A dataset and an integer k | A list of the k nearest neighbors of the given dataset.                      |
+| `recommendData()`     | A dataset and an integer k | A map of the number of times each neighbor has been recommended.             |
 
 ## Change Log
 
