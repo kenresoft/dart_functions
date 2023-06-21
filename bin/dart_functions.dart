@@ -98,14 +98,14 @@ void main(List<String> arguments) {
   ];
 
   var r = Recommendation();
-  r.train(dataset: DataImage.fromList(dataset), matrix: print);
+  r.train(dataset: DataImage.fromList(dataset), matrix: (result) {});
   r.predict(views: 1000, onPredicted: print);
   r.recommend(testDatapoint: DataImage.dataPoint(views: 12, rating: 10.0), count: 4, onRecommended: print);
 
   print('');
   //print(Dataset.sample());
-  print(DataImage.fromList(dataset).toJson());
-  print('');
+  //print(DataImage.fromList(dataset).toJson());
+  //print('');
   //print(DataImage.toJsonList(DataImage.fromList(dataset)));
 
   /*  1,
