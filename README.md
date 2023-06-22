@@ -69,6 +69,8 @@ Here is a table that summarizes the behavior of the `joinFix()` function:
 | `applyToEach` | A Boolean value that indicates whether the prefix and suffix should be applied to each element of the list.                                                  |
 | Return value  | A string that contains the elements of the list, separated by the separator and with the prefix and suffix applied to each element, if`applyToEach` is true. |
 
+---
+
 ### 2. Dataset.dart
 
 To convert Dataset(List of DataImages) to JSON, you can do the following:
@@ -91,7 +93,6 @@ var json = DataImage.toJsonList(DataImage.fromList(dataset));
 
 ---
 
-
 ### 3. recommender.dart
 
 #### Explanation
@@ -107,13 +108,39 @@ Here is a table explanation of the recommender.
 
 Here is a table that summarizes the input and output of each function:
 
-
 | **Function**          | **Input**                  | **Output**                                                                   |
 |-----------------------|----------------------------|------------------------------------------------------------------------------|
 | `euclideanDistance()` | Two datasets               | A double value representing the Euclidean distance between the two datasets. |
 | `sortDistanceList()`  | A list of distances        | A sorted list of distances.                                                  |
 | `kNearestNeighbors()` | A dataset and an integer k | A list of the k nearest neighbors of the given dataset.                      |
 | `recommendData()`     | A dataset and an integer k | A map of the number of times each neighbor has been recommended.             |
+
+---
+
+### 4. runTime.dart
+This measures the execution time of a block of code. The function takes two parameters: a function that represents the block of code to be timed, and a function that will be called with the duration of the execution time.
+
+The function works by first getting the current time. Then, it calls the block of code to be timed. Finally, it gets the current time again and calculates the difference between the two times. The difference is then passed to the second parameter as the duration of the execution time.
+
+The code can be used to measure the execution time of different parts of a project. This can be helpful for identifying performance bottlenecks and optimizing the code.
+
+For example, you could use the code to measure the execution time of a function that is called frequently in your project. If the execution time of the function is high, you could then optimize the function to improve its performance.
+
+Here is an example of how the code could be used:
+
+```
+void main() {
+  runTime(() {
+    // Do something that takes some time.
+  }, (duration) {
+    print('The execution time was ${duration}');
+  });
+}
+```
+
+This code would measure the execution time of the `doSomething()` function and print the duration to the console.
+
+
 
 ## Change Log
 
