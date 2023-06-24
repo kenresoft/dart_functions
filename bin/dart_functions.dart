@@ -189,23 +189,9 @@ void main(List<String> arguments) {
     return str.let((it) => it[0].toUpperCase() + it.substring(1));
   }
 
+  String n = 'null';
 
-  var str = 'hello';
-  print(null.toFirstUpperCase);
-  print(capitalize(str)); // Hello
-
-  String? name;
-  try {
-    String? greeting = name?.toUpperCase();
-    if (greeting == null) {
-      print("The name is null");
-    } else {
-      print(greeting);
-    }
-  } catch (e) {
-    print("$e--");
-  }
-
+  print(n.wrap(20));
 
 // upperCaseName will be null if name is null
 
