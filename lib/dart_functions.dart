@@ -10,3 +10,4 @@ export 'package:dart_functions/src/ml/data_image.dart';
 export 'package:dart_functions/src/ml/dataset.dart';
 export 'package:dart_functions/src/ml/forecaster.dart';
 export 'package:dart_functions/src/ml/recommendation.dart';
+export 'package:dart_functions/src/blocks/scope.dart';

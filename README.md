@@ -61,6 +61,7 @@ print(joinedStringsWithPrefixAndSuffix); // (Hello, World)
 
 Here is a table that summarizes the behavior of the `joinFix()` function:
 
+
 | Argument      | Behavior                                                                                                                                                     |
 |---------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `separator`   | The string that will be used to separate the elements of the list.                                                                                           |
@@ -99,6 +100,7 @@ var json = DataImage.toJsonList(DataImage.fromList(dataset));
 
 Here is a table explanation of the recommender.
 
+
 | **Function**          | **Description**                                         | **Output**                                                                   |
 |-----------------------|---------------------------------------------------------|------------------------------------------------------------------------------|
 | `euclideanDistance()` | Calculates the Euclidean distance between two datasets. | A double value representing the Euclidean distance between the two datasets. |
@@ -107,6 +109,7 @@ Here is a table explanation of the recommender.
 | `recommendData()`     | Recommends data to a user based on their interests.     | A map of the number of times each neighbor has been recommended.             |
 
 Here is a table that summarizes the input and output of each function:
+
 
 | **Function**          | **Input**                  | **Output**                                                                   |
 |-----------------------|----------------------------|------------------------------------------------------------------------------|
@@ -118,6 +121,7 @@ Here is a table that summarizes the input and output of each function:
 ---
 
 ### 4. runTime.dart
+
 This measures the execution time of a block of code. The function takes two parameters: a function that represents the block of code to be timed, and a function that will be called with the duration of the execution time.
 
 The function works by first getting the current time. Then, it calls the block of code to be timed. Finally, it gets the current time again and calculates the difference between the two times. The difference is then passed to the second parameter as the duration of the execution time.
@@ -140,7 +144,39 @@ void main() {
 
 This code would measure the execution time of the `doSomething()` function and print the duration to the console.
 
+---
 
+### 5. scope.dart
+
+The `let()` extension is a generic extension that takes a function as a parameter. The function is called with the receiver of the extension as its argument. The extension then returns the result of the function, or `null` if the function returns `null`.
+
+The `let()` extension can be used to execute a function on a value and then return the result of the function. However, the `let()` extension in the code you provided has an additional check to ensure that the receiver of the extension is not `null`. If the receiver of the extension is `null`, the extension simply returns `null`.
+
+Here is an example of how the `let()` extension can be used:
+
+```
+String capitalize(String str) {
+  return str.let((it) => it[0].toUpperCase() + it.substring(1));
+}
+
+void main() {
+  var str = 'hello';
+  print(capitalize(str)); // Hello
+}
+```
+
+In the example code, the `let()` extension is used to capitalize the first letter of a string. The `capitalize()` function takes a string as its argument and returns a new string with the first letter capitalized. The `let()` extension is then used to call the `capitalize()` function on the `str` variable. The result of the `capitalize()` function is then returned by the `let()` extension.
+
+The `let` scope function is a powerful tool that can be used to simplify code and prevent NullPointerExceptions.
+
+Here is a table of the benefits of using the `let` scope function:
+
+
+| Benefit                                                                 | Description                                                                                                                                                                 |
+|-------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Prevents NullPointerExceptions {same thing as using dart 3`?` operator} | The`let` function ensures that the object passed to it is not null before executing the expression.                                                                         |
+| Simplifies code                                                         | The`let` function can be used to simplify code by eliminating the need to write multiple lines of code. It helps to execute a block of code within the context of an object |
+| Makes code more readable                                                | The`let` function can make code more readable by grouping related code together.                                                                                            |
 
 ## Change Log
 
@@ -153,4 +189,3 @@ This project is open source and contributions are welcome.
 If you find a bug or have an improvement, please open an issue or submit a pull request.
 
 Thank you for using Dart Functions!
-

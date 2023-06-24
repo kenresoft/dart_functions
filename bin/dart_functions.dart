@@ -1,4 +1,5 @@
 import 'package:dart_functions/dart_functions.dart';
+import 'package:dart_functions/src/blocks/scope.dart';
 
 void main(List<String> arguments) {
   arguments = ['Multiply', 'Dart', 'Function'];
@@ -172,4 +173,41 @@ void main(List<String> arguments) {
   print(forecast(1000, dataset));
 
   //var matrix = Matrix(dataset_)..swapColumns(0, 1);
+
+/*  List multiply({required int times, bool sort = false}) {
+    if (times <= 0) {
+      return [];
+    }
+    List newList = expand((e) => Iterable.generate(times, (_) => e)).toList(); // List.generate()
+    if (sort) {
+      newList.sort();
+    }
+    return newList;
+  }*/
+
+  String? capitalize(String str) {
+    return str.let((it) => it[0].toUpperCase() + it.substring(1));
+  }
+
+
+  var str = 'hello';
+  print(null.toFirstUpperCase);
+  print(capitalize(str)); // Hello
+
+  String? name;
+  try {
+    String? greeting = name?.toUpperCase();
+    if (greeting == null) {
+      print("The name is null");
+    } else {
+      print(greeting);
+    }
+  } catch (e) {
+    print("$e--");
+  }
+
+
+// upperCaseName will be null if name is null
+
+
 }
