@@ -1,3 +1,4 @@
+
 # dart_functions
 
 A collection of multi-versioned dart functions.
@@ -30,6 +31,21 @@ in `lib/`, and an example unit test in `test/`.
 * recommender
 * dataset
 
+The functions in this repository are well-documented and easy to use. They can be integrated into your Flutter apps with just a few lines of code.
+
+#### Benefits of using this repository:
+
+- Save time and effort by using pre-written, well-tested functions.
+- Enhance the functionality of your Flutter apps with a wide range of features.
+- Make your Flutter apps more modular and reusable.
+
+#### Get started:
+
+- Clone the repository to your local machine.
+- Explore the different categories of functions.
+- Read the documentation for each function.
+- Integrate the functions into your Flutter apps.
+  
 ## Related projects
 
 * [payment_card](https://github.com/kenresoft/payment_card)
